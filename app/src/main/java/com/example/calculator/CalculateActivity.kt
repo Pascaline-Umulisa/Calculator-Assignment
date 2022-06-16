@@ -39,7 +39,7 @@ class CalculateActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.setError("Enter the first number")
+                tilSecond.setError("Enter the Second number")
                 return@setOnClickListener
             }
             addition(first.toDouble(),second.toDouble())
@@ -52,7 +52,7 @@ class CalculateActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.setError("Enter the first number")
+                tilSecond.setError("Enter the Second number")
                 return@setOnClickListener
             }
             subtraction(first.toDouble(),second.toDouble())
@@ -65,7 +65,7 @@ class CalculateActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.setError("Enter the first number")
+                tilSecond.setError("Enter the second number")
                 return@setOnClickListener
             }
             modulus(first.toDouble(),second.toDouble())
@@ -78,7 +78,7 @@ class CalculateActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.setError("Enter the first number")
+                tilSecond.setError("Enter the second  number")
                 return@setOnClickListener
             }
             division(first.toDouble(),second.toDouble())
