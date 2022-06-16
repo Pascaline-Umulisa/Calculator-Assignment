@@ -1,3 +1,4 @@
+
 package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
@@ -32,66 +33,70 @@ class CalculateActivity : AppCompatActivity() {
         tvAnswer=findViewById(R.id.tvAnswer)
 
         btnAdd.setOnClickListener {
-            addition()
+            val first=etFirst.text.toString()
+            val second=etSecond.text.toString()
+            if (first.isBlank()){
+                tilFirst.error="First number is required"
+            }
+            if(second.isBlank()){
+                tilSecond.error="Second number is reqquired"
+            }
+            addition(first.toDouble(),second.toDouble())
         }
         btnSub.setOnClickListener {
-            subtraction()
+            val first=etFirst.text.toString()
+            val second=etSecond.text.toString()
+            if (first.isBlank()){
+                tilFirst.error="First number is required"
+            }
+            if(second.isBlank()){
+                tilSecond.error="Second number is reqquired"
+            }
+            subtraction(first.toDouble(),second.toDouble())
         }
         btnModulus.setOnClickListener {
-            modulus()
+            val first=etFirst.text.toString()
+            val second=etSecond.text.toString()
+            if (first.isBlank()){
+                tilFirst.error="First number is required"
+            }
+            if(second.isBlank()){
+                tilSecond.error="Second number is reqquired"
+            }
+            modulus(first.toDouble(),second.toDouble())
         }
         btnDivide.setOnClickListener {
-            division()
+            val first=etFirst.text.toString()
+            val second=etSecond.text.toString()
+            if (first.isBlank()){
+                tilFirst.error="First number is required"
+            }
+            if(second.isBlank()){
+                tilSecond.error="Second number is reqquired"
+            }
+            division(first.toDouble(),second.toDouble())
         }
     }
-    fun addition(){
-        var first=etFirst.text.toString()
-        var second=etSecond.text.toString()
-//        var answer=tvAnswer.text
-        if (first.isBlank()){
-            tilFirst.error="First number is required"
-        }
-        if(second.isBlank()){
-            tilSecond.error="Second number is reqquired"
-        }
-        tvAnswer.text=first+second
+    fun addition(first:Double,second:Double){
+           var answer=first+second
+        tvAnswer.text=answer.toString()
 
     }
-    fun subtraction(){
-        var first=etFirst.text.toString()
-        var second=etSecond.text.toString()
-//        var answer=tvAnswer.text.toString()
-        if (first.isBlank()){
-            tilFirst.error="First number is required"
-        }
-        if (second.isBlank()){
-            tilSecond.error="second number is required"
-        }
-        tvAnswer.text=first-second
+    fun subtraction(first:Double,second:Double){
+
+        var answer=first-second
+        tvAnswer.text=answer.toString()
     }
-    fun modulus(){
-        var first=etFirst.text.toString()
-        var second=etSecond.text.toString()
-//        var answer=tvAnswer.text.toString()
-        if (first.isBlank()){
-            tilFirst.error="First number is required"
-        }
-        if (second.isBlank()){
-            tilSecond.error="second number is required"
-        }
-        tvAnswer.text=first%second
+    fun modulus(first:Double,second:Double){
+
+        var answer=first%second
+        tvAnswer.text=answer.toString()
     }
-    fun division(){
-        var first=etFirst.text.toString()
-        var second=etSecond.text.toString()
-//        var answer=tvAnswer.text.toString()
-        if (first.isBlank()){
-            tilFirst.error="First number is required"
-        }
-        if (second.isBlank()){
-            tilSecond.error="second number is required"
-        }
-        tvAnswer.text=first/second
+    fun division(first:Double,second:Double){
+
+        var answer=first/second
+        tvAnswer.text=answer.toString()
     }
 
 }
+
