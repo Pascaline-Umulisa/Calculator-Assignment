@@ -1,4 +1,3 @@
-
 package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
@@ -36,10 +35,12 @@ class CalculateActivity : AppCompatActivity() {
             val first=etFirst.text.toString()
             val second=etSecond.text.toString()
             if (first.isBlank()){
-                tilFirst.error="First number is required"
+                tilFirst.setError("Enter the first number")
+                return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.error="Second number is reqquired"
+                tilSecond.setError("Enter the first number")
+                return@setOnClickListener
             }
             addition(first.toDouble(),second.toDouble())
         }
@@ -47,10 +48,12 @@ class CalculateActivity : AppCompatActivity() {
             val first=etFirst.text.toString()
             val second=etSecond.text.toString()
             if (first.isBlank()){
-                tilFirst.error="First number is required"
+                tilFirst.setError("Enter the first number")
+                return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.error="Second number is reqquired"
+                tilSecond.setError("Enter the first number")
+                return@setOnClickListener
             }
             subtraction(first.toDouble(),second.toDouble())
         }
@@ -58,10 +61,12 @@ class CalculateActivity : AppCompatActivity() {
             val first=etFirst.text.toString()
             val second=etSecond.text.toString()
             if (first.isBlank()){
-                tilFirst.error="First number is required"
+                tilFirst.setError("Enter the first number")
+                return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.error="Second number is reqquired"
+                tilSecond.setError("Enter the first number")
+                return@setOnClickListener
             }
             modulus(first.toDouble(),second.toDouble())
         }
@@ -69,16 +74,18 @@ class CalculateActivity : AppCompatActivity() {
             val first=etFirst.text.toString()
             val second=etSecond.text.toString()
             if (first.isBlank()){
-                tilFirst.error="First number is required"
+                tilFirst.setError("Enter the first number")
+                return@setOnClickListener
             }
             if(second.isBlank()){
-                tilSecond.error="Second number is reqquired"
+                tilSecond.setError("Enter the first number")
+                return@setOnClickListener
             }
             division(first.toDouble(),second.toDouble())
         }
     }
     fun addition(first:Double,second:Double){
-           var answer=first+second
+        var answer=first+second
         tvAnswer.text=answer.toString()
 
     }

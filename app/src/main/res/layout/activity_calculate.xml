@@ -18,17 +18,19 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_format_list_numbered_24" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilFirst"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="32dp"
+        app:boxBackgroundColor="#F0CBF6"
         app:layout_constraintBottom_toBottomOf="@+id/imgFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgFirst"
@@ -53,8 +55,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilSecond"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:boxBackgroundColor="#F0CBF6"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/tilFirst"
         app:layout_constraintStart_toStartOf="@+id/tilFirst"
@@ -117,7 +121,8 @@
         android:text="Answer"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tilSecond" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
