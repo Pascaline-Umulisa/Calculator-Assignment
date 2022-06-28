@@ -4,106 +4,78 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.example.calculator.databinding.ActivityCalculateBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 class CalculateActivity : AppCompatActivity() {
-
-    lateinit var tilFirst:TextInputLayout
-    lateinit var tilSecond:TextInputLayout
-    lateinit var etFirst:TextInputEditText
-    lateinit var etSecond:TextInputEditText
-    lateinit var btnAdd:Button
-    lateinit var btnSub:Button
-    lateinit var btnModulus:Button
-    lateinit var btnDivide:Button
-    lateinit var tvAnswer:TextView
+    lateinit var  binding:ActivityCalculateBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calculate)
-        tilFirst=findViewById(R.id.tilFirst)
-        tilSecond=findViewById(R.id.tilSecond)
-        etFirst=findViewById(R.id.etFirst)
-        etSecond=findViewById(R.id.etSecond)
-        btnAdd=findViewById(R.id.btnAdd)
-        btnSub=findViewById(R.id.btnSub)
-        btnModulus=findViewById(R.id.btnModulus)
-        btnDivide=findViewById(R.id.btnDivide)
-        tvAnswer=findViewById(R.id.tvAnswer)
+        binding= ActivityCalculateBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        handleclick()
 
-        btnAdd.setOnClickListener {
-            val first=etFirst.text.toString()
-            val second=etSecond.text.toString()
-            if (first.isBlank()){
-                tilFirst.setError("Enter the first number")
-                return@setOnClickListener
-            }
-            if(second.isBlank()){
-                tilSecond.setError("Enter the Second number")
-                return@setOnClickListener
-            }
-            addition(first.toDouble(),second.toDouble())
+    }
+    fun  handleclick(){
+        binding.btnAdd.setOnClickListener {
+            Add(obtainInput())
         }
-        btnSub.setOnClickListener {
-            val first=etFirst.text.toString()
-            val second=etSecond.text.toString()
-            if (first.isBlank()){
-                tilFirst.setError("Enter the first number")
-                return@setOnClickListener
-            }
-            if(second.isBlank()){
-                tilSecond.setError("Enter the Second number")
-                return@setOnClickListener
-            }
-            subtraction(first.toDouble(),second.toDouble())
+        binding.btnDivide.setOnClickListener {
+            Division(obtainInput())
         }
-        btnModulus.setOnClickListener {
-            val first=etFirst.text.toString()
-            val second=etSecond.text.toString()
-            if (first.isBlank()){
-                tilFirst.setError("Enter the first number")
-                return@setOnClickListener
-            }
-            if(second.isBlank()){
-                tilSecond.setError("Enter the second number")
-                return@setOnClickListener
-            }
-            modulus(first.toDouble(),second.toDouble())
+        binding.btnModulus.setOnClickListener {
+            Modulus(obtainInput())
         }
-        btnDivide.setOnClickListener {
-            val first=etFirst.text.toString()
-            val second=etSecond.text.toString()
-            if (first.isBlank()){
-                tilFirst.setError("Enter the first number")
-                return@setOnClickListener
-            }
-            if(second.isBlank()){
-                tilSecond.setError("Enter the second  number")
-                return@setOnClickListener
-            }
-            division(first.toDouble(),second.toDouble())
+        binding.btnSub.setOnClickListener {
+            Subtraction(obtainInput())
         }
     }
-    fun addition(first:Double,second:Double){
-        var answer=first+second
-        tvAnswer.text=answer.toString()
+    data class Inputs(var firstnum:Double,var secondnum:Double)
+    fun obtainInput():Inputs?{
+        binding.tilFirstNumber.error=null
+        binding.tilSecondNumber.error=null
+        val firstnumb=binding.etFirst.text.toString()
+        val secondnumb=binding.etSecond.text.toString()
+        var error=false
+        if(firstnumb.isBlank()) {
+            binding.tilFirstNumber.error="first number required"
+            error=true
+        }
+        if(secondnumb.isBlank()) {
+            binding.tilSecondNumber.error="second number required"
+            error=true
+        }
+        if (!error){
+            return Inputs(firstnumb.toDouble(),secondnumb.toDouble())
 
+        }
+        return null
     }
-    fun subtraction(first:Double,second:Double){
-
-        var answer=first-second
-        tvAnswer.text=answer.toString()
+    fun Add(inputs: Inputs?){
+        if (inputs!=null) {
+//            var add = inputs.firstnum + inputs.secondnum
+            displayResults(inputs.firstnum + inputs.secondnum)
+        }
     }
-    fun modulus(first:Double,second:Double){
-
-        var answer=first%second
-        tvAnswer.text=answer.toString()
+    fun Division(inputs: Inputs?){
+        if (inputs!=null) {
+//            var add = inputs.firstnum / inputs.secondnum
+            displayResults(inputs.firstnum / inputs.secondnum)
+        }
     }
-    fun division(first:Double,second:Double){
-
-        var answer=first/second
-        tvAnswer.text=answer.toString()
+    fun Modulus(inputs: Inputs?){
+        if (inputs!=null){
+//            var add= inputs.firstnum / inputs.secondnum
+            displayResults( inputs.firstnum / inputs.secondnum)}
     }
-
+    fun Subtraction(inputs: Inputs?){
+        if (inputs!=null){
+//            var add=inputs.firstnum - inputs.secondnum
+            displayResults(inputs.firstnum - inputs.secondnum)
+        }
+    }
+    fun displayResults(add:Double){
+        binding.tvAnswer.text=add.toString()}
 }
 
